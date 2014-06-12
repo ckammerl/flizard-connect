@@ -8,15 +8,15 @@ function Board(){
 Board.prototype = {
 	addPiece: function(column){
 		// debugger
+		var newPiece
 		if (this.columns[column].length >= 6){
-
+			console.log("adios")
 		}
 		else {
-			// var lastColor = "red"
-			var newPiece = new Piece(currentColor)
-			var insertColumn = this.columns[column]
-			insertColumn.push(newPiece)
-			this.rows[insertColumn.length].push(newPiece)
+			console.log("whatup");
+			newPiece = new Piece(currentColor)
+			this.rows[this.columns[column].length].push(newPiece)
+			this.columns[column].push(newPiece);
 			if (currentColor === "red"){
 				currentColor = "black";
 			}	else {
@@ -27,7 +27,7 @@ Board.prototype = {
 }
 
 function Piece(color){
-	this.color = "color";
+	this.color = color;
 };
 
 
@@ -43,9 +43,6 @@ function Piece(color){
 
 
 //********************* VIEW *********************//
-function renderBoard(){
-	
-}
 
 
 
@@ -69,13 +66,27 @@ function renderBoard(){
 $(document).ready(function() {
 	gameBoard = new Board();
 	currentColor = "red";
-	$('.colA').addEventListener("click", gameBoard.addPiece(0), false);
-	$('.colB').addEventListener("click", gameBoard.addPiece(1), false);
-	$('.colC').addEventListener("click", gameBoard.addPiece(2), false);
-	$('.colD').addEventListener("click", gameBoard.addPiece(3), false);
-	$('.colE').addEventListener("click", gameBoard.addPiece(4), false);
-	$('.colF').addEventListener("click", gameBoard.addPiece(5), false);
-	$('.colG').addEventListener("click", gameBoard.addPiece(6), false);
+	$('.colA').on("click", function(){
+		gameBoard.addPiece(0);
+	});
+	$('.colB').on("click", function(){
+		gameBoard.addPiece(1);
+	});
+	$('.colC').on("click", function(){
+		gameBoard.addPiece(2);
+	});
+	$('.colD').on("click", function(){
+		gameBoard.addPiece(3);
+	});
+	$('.colE').on("click", function(){
+		gameBoard.addPiece(4);
+	});
+	$('.colF').on("click", function(){
+		gameBoard.addPiece(5);
+	});
+	$('.colG').on("click", function(){
+		gameBoard.addPiece(6);
+	});
 });
 
 //*****************************************************//
