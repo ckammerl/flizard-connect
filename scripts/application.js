@@ -82,6 +82,7 @@ $(document).ready(function() {
 	gameBoard = new Board();
 	currentColor = "red";
 
+
 	$('.1').on("click", function(){
 		gameBoard.addPiece(0);
 	});
@@ -103,6 +104,22 @@ $(document).ready(function() {
 	$('.7').on("click", function(){
 		gameBoard.addPiece(6);
 	});
+
+	var player_1 = prompt("Please enter the name of player 1", "type name here");
+	var player_2 = prompt("Please enter the name of player 2", "type name here");
+	$('#welcome').innerHTML = "Welcome to our JS Connect Four Game, " + player_1 + " and " + player_2 + ".";
+
 });
 
 //*****************************************************//
+
+
+// add to the document.ready function above
+
+
+
+
+
+
+
+
