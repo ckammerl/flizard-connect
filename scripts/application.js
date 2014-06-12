@@ -1,13 +1,33 @@
 //******************** MODEL ********************//
-function board(){
+function Board(){
 	this.rows = [[],[],[],[],[],[]];
 	this.columns = [[],[],[],[],[],[],[]];
 	this.players = [];
+};
+
+Board.prototype = {
+	addPiece: function(column){
+		// debugger
+		var newPiece
+		if (this.columns[column].length >= 6){
+			console.log("adios")
+		}
+		else {
+			console.log("whatup");
+			newPiece = new Piece(currentColor)
+			this.rows[this.columns[column].length].push(newPiece)
+			this.columns[column].push(newPiece);
+			if (currentColor === "red"){
+				currentColor = "black";
+			}	else {
+				currentColor = "red";
+			}
+		}
+	}
 }
 
-
-function piece(){
-	this.color = "";
+function Piece(color){
+	this.color = color;
 };
 
 
@@ -23,9 +43,6 @@ function piece(){
 
 
 //********************* VIEW *********************//
-function renderBoard(){
-	
-}
 
 
 
@@ -47,22 +64,29 @@ function renderBoard(){
 
 //********************* CONTROLLER *********************//
 $(document).ready(function() {
-	renderBoard()
-
-})
-
-$('.colA').addEventListener("click", addPiece(0), false);
-$('.colB').addEventListener("click", addPiece(1), false);
-$('.colC').addEventListener("click", addPiece(2), false);
-$('.colD').addEventListener("click", addPiece(3), false);
-$('.colE').addEventListener("click", addPiece(4), false);
-$('.colF').addEventListener("click", addPiece(5), false);
-$('.colG').addEventListener("click", addPiece(6), false);
-
-
-
-// var gameBoard = new Board
-
-
+	gameBoard = new Board();
+	currentColor = "red";
+	$('.colA').on("click", function(){
+		gameBoard.addPiece(0);
+	});
+	$('.colB').on("click", function(){
+		gameBoard.addPiece(1);
+	});
+	$('.colC').on("click", function(){
+		gameBoard.addPiece(2);
+	});
+	$('.colD').on("click", function(){
+		gameBoard.addPiece(3);
+	});
+	$('.colE').on("click", function(){
+		gameBoard.addPiece(4);
+	});
+	$('.colF').on("click", function(){
+		gameBoard.addPiece(5);
+	});
+	$('.colG').on("click", function(){
+		gameBoard.addPiece(6);
+	});
+});
 
 //*****************************************************//
