@@ -17,11 +17,13 @@ Board.prototype = {
 			newPiece = new Piece(currentColor)
 			this.rows[this.columns[column].length].push(newPiece)
 			this.columns[column].push(newPiece);
+			
 			if (currentColor === "red"){
 				currentColor = "black";
 			}	else {
 				currentColor = "red";
 			}
+
 		}
 	}
 }
@@ -35,7 +37,9 @@ function Piece(color){
 
 
 
+{
 
+			}
 
 
 
@@ -44,6 +48,16 @@ function Piece(color){
 
 //********************* VIEW *********************//
 
+function drawBoard(){
+	var createBoard = $('#board')
+	for (var i = 1; i < 7; i++){
+		createBoard.append('<tr id="row' + i + '"></tr>')
+		var newRow = $('#row' + i)
+		for (var col = 1; col < 8; col++){
+			newRow.append('<td class="a ' + col + '"></td>')
+		}
+	}
+}
 
 
 
@@ -64,27 +78,29 @@ function Piece(color){
 
 //********************* CONTROLLER *********************//
 $(document).ready(function() {
+	drawBoard();
 	gameBoard = new Board();
 	currentColor = "red";
-	$('.colA').on("click", function(){
+
+	$('.1').on("click", function(){
 		gameBoard.addPiece(0);
 	});
-	$('.colB').on("click", function(){
+	$('.2').on("click", function(){
 		gameBoard.addPiece(1);
 	});
-	$('.colC').on("click", function(){
+	$('.3').on("click", function(){
 		gameBoard.addPiece(2);
 	});
-	$('.colD').on("click", function(){
+	$('.4').on("click", function(){
 		gameBoard.addPiece(3);
 	});
-	$('.colE').on("click", function(){
+	$('.5').on("click", function(){
 		gameBoard.addPiece(4);
 	});
-	$('.colF').on("click", function(){
+	$('.6').on("click", function(){
 		gameBoard.addPiece(5);
 	});
-	$('.colG').on("click", function(){
+	$('.7').on("click", function(){
 		gameBoard.addPiece(6);
 	});
 });
