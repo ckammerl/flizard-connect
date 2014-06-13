@@ -17,7 +17,7 @@ Board.prototype = {
 			newPiece = new Piece(currentColor)
 			this.rows[this.columns[column].length].push(newPiece)
 			this.columns[column].push(newPiece);
-			
+
 			if (currentColor === "red"){
 				currentColor = "black";
 			}	else {
@@ -102,8 +102,8 @@ $(document).ready(function() {
 		gameBoard.addPiece(6);
 	});
 
-	var player_1 = prompt("Please enter the name of player 1", "type name here");
-	var player_2 = prompt("Please enter the name of player 2", "type name here");
+	// var player_1 = prompt("Please enter the name of player 1", "type name here");
+	// var player_2 = prompt("Please enter the name of player 2", "type name here");
 	$('#welcome').innerHTML = "Welcome to our JS Connect Four Game, " + player_1 + " and " + player_2 + ".";
 
 });
