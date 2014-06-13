@@ -1,7 +1,8 @@
 
 html {
-background: url(http://www2.usanetwork.com/series/monk/interactivegames/mindmachine/images/ad_bk.jpg) no-repeat center center fixed;
-background-size: cover;
+  background-color: blue;
+  background: url(http://www2.usanetwork.com/series/monk/interactivegames/mindmachine/images/ad_bk.jpg) no-repeat center center fixed;
+  background-size: cover;
 }
 
 .board {
