@@ -20,6 +20,19 @@ html {
 table {
   width: 100%;
 }
+.red {
+  display: inline;
+  float: left;
+}
+.black {
+  display: inline;
+  float: right;
+}
+
+#welcome {
+  font-family: serif;
+  color: #ffab00;
+}
 
 #behind td,
 #board td{

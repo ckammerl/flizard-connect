@@ -7,10 +7,11 @@ function Board(){
 
 Board.prototype = {
 	addPiece: function(column){
-		var newPiece
-		var newRow = this.columns[column].length
-		var domPosition
-		var checkVals
+		var newPiece;
+		var newRow = this.columns[column].length;
+		var domPosition;
+		var checkVals;
+
 
 		if (this.columns[column].length >= 6){
 			console.log("adios")
@@ -27,7 +28,7 @@ Board.prototype = {
 
 			checkVals = domPosition.attr('class').split(/\s+/)
 			newPiece.values = checkVals
-			
+
 
 			checkWinner(checkVals, this)
 			switchColor()
@@ -60,7 +61,7 @@ function drawBoard(){
 		createBoard.append('<tr id="row' + i + '"></tr>')
 		var newRow = $('#row' + i)
 		for (var col = 1; col < 8; col++){
-			newRow.append('<td class="' + rowClasses[rowClasses.length - 1] + ' ' + col + '"></td>')
+			newRow.append('<td class="' + rowClasses[rowClasses.length - 1] + ' ' + col + '" data-column-id="' + (col -1) + '"></td>')
 		}
 		rowClasses.pop()
 	}
@@ -90,38 +91,40 @@ dom.css('background-color', color)
 $(document).ready(function() {
 	drawBoard();
 	addDiagonals();
-	rowKeys = ['a', 'b', 'c', 'd', 'e', 'f']
 	gameBoard = new Board();
+	addClickEventListener();
+	rowKeys = ['a', 'b', 'c', 'd', 'e', 'f']
 	currentColor = "red";
 	player1 = prompt("Please enter the name of player 1", "type name here");
 	player2 = prompt("Please enter the name of player 2", "type name here");
 
-	$('.1').on("click", function(){
-		gameBoard.addPiece(0);
-	});
-	$('.2').on("click", function(){
-		gameBoard.addPiece(1);
-	});
-	$('.3').on("click", function(){
-		gameBoard.addPiece(2);
-	});
-	$('.4').on("click", function(){
-		gameBoard.addPiece(3);
-	});
-	$('.5').on("click", function(){
-		gameBoard.addPiece(4);
-	});
-	$('.6').on("click", function(){
-		gameBoard.addPiece(5);
-	});
-	$('.7').on("click", function(){
-		gameBoard.addPiece(6);
-	});
-
-
 	$('#welcome').innerHTML = "Welcome to our JS Connect Four Game, " + player1 + " and " + player2 + ".";
 
 });
+
+	// $('.1').on("click", function(){ // column classes
+	// 	gameBoard.addPiece(0); //rows
+	// });
+	// $('.2').on("click", function(){
+	// 	gameBoard.addPiece(1);
+	// });
+	// $('.3').on("click", function(){
+	// 	gameBoard.addPiece(2);
+	// });
+	// $('.4').on("click", function(){
+	// 	gameBoard.addPiece(3);
+	// });
+	// $('.5').on("click", function(){
+	// 	gameBoard.addPiece(4);
+	// });
+	// $('.6').on("click", function(){
+	// 	gameBoard.addPiece(5);
+	// });
+	// $('.7').on("click", function(){
+	// 	gameBoard.addPiece(6);
+	// });
+
+
 
 
 
@@ -130,6 +133,26 @@ $(document).ready(function() {
 
 // add to the document.ready function above
 
+function addClickEventListener() {
+	for (var i = 0; i < 7; i++) { // 7 references num board columns
+		$('.' + (i +1)).on("click", function(){ // i references column classes
+			// console.log(this.attr)
+        var clickIndex = $(this).data("column-id")
+        console.log(clickIndex)
+					gameBoard.addPiece(clickIndex); //i references row
+		})
+	}
+}
+
+function removeClickEventListener() {
+	$("td").off();
+}
+
+
+
+// Remember usage .data()
+//  <p data-foo>  </p>
+// $("p").data("foo")
 
 
 //*****************************************************//
@@ -154,7 +177,6 @@ function checkWinner(values, board){
 				if (pieceObject.values.indexOf(currentVal) >= 0){
 					checks[i].push(pieceObject.color);
 				}
-
 			}
 		}
 		console.log(checks[i])
@@ -177,6 +199,20 @@ function checkWinner(values, board){
 		}
 // debugger
 		if (count >= 4){
+			var gameWinner
+			var loser
+			if(currentColor == "red") {
+				gameWinner = player1;
+				loser = player2;
+				console.log("current color is red")
+			}
+			else {
+				gameWinner = player2;
+				loser = player1;
+				console.log("current color is black")
+			}
+
+
 			if (i == 0) {
 				typeOfWin = "horizontally";
 			} else if (i == 1) {
@@ -184,8 +220,11 @@ function checkWinner(values, board){
 			} else {
 				typeOfWin = "diagonally"
 			}
-			alert('winner!! ' + typeOfWin)
-		} 
+
+			alert("Congratulations, " + gameWinner + "!!!  You beat " + loser + " by connecting 4 pieces " + typeOfWin + "!!!")
+			removeClickEventListener();
+		}
+
 	}
 	// debugger
 }
@@ -243,8 +282,5 @@ function addDiagonals() {
 	$('.f.7').addClass("d4a");
 
 };
-
-
-
 
 
