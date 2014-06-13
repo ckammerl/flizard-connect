@@ -199,6 +199,20 @@ function checkWinner(values, board){
 		}
 // debugger
 		if (count >= 4){
+			var gameWinner
+			var loser
+			if(currentColor == "red") {
+				gameWinner = player1;
+				loser = player2;
+				console.log("current color is red")
+			}
+			else {
+				gameWinner = player2;
+				loser = player1;
+				console.log("current color is black")
+			}
+
+
 			if (i == 0) {
 				typeOfWin = "horizontally";
 			} else if (i == 1) {
@@ -206,9 +220,11 @@ function checkWinner(values, board){
 			} else {
 				typeOfWin = "diagonally"
 			}
-			alert('winner!! ' + typeOfWin);
+
+			alert("Congratulations, " + gameWinner + "!!!  You beat " + loser + " by connecting 4 pieces " + typeOfWin + "!!!")
 			removeClickEventListener();
 		}
+
 	}
 	// debugger
 }

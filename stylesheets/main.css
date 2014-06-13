@@ -20,6 +20,20 @@ table {
   width: 100%;
 }
 
+#welcome {
+  font-family: serif;
+  color: #ffab00;
+}
+#red_player {
+  text-align: left;
+  float: left;
+}
+
+#black_player {
+  text-align: right;
+  float: right;
+}
+
 #behind td,
 #board td{
   /*padding: 4px;*/
