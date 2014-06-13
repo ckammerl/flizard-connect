@@ -7,34 +7,37 @@ function Board(){
 
 Board.prototype = {
 	addPiece: function(column){
-		// debugger
 		var newPiece
 		var newRow = this.columns[column].length
+		var domPosition
+		var checkVals
 
 		if (this.columns[column].length >= 6){
 			console.log("adios")
 		}
 		else {
 			console.log("whatup");
-			newPiece = new Piece(currentColor)
-			this.rows[newRow].push(newPiece)
+			newPiece = new Piece(currentColor);
+			this.rows[newRow].splice(column, 0, newPiece);
+			// this.rows[newRow].push(newPiece);
 			this.columns[column].push(newPiece);
-			updateColors(newRow, column, newPiece)
-			// debugger
-			if (currentColor === "red"){
-				currentColor = "black";
-			}	else {
-				currentColor = "red";
-			}
 
+			domPosition = $('.'+rowKeys[newRow]+'.'+ (column + 1))
+			updateColor(domPosition, currentColor)
+
+			checkVals = domPosition.attr('class').split(/\s+/)
+			newPiece.values = checkVals
+			
+
+			checkWinner(checkVals, this)
+			switchColor()
 		}
 	}
 }
 
 function Piece(color){
 	this.color = color;
-	this.row = ""
-	this.column = ""
+	this.values = []
 };
 
 
@@ -63,10 +66,8 @@ function drawBoard(){
 	}
 }
 
-function updateColors(row, col, object){
-	var rowKeys = ['a', 'b', 'c', 'd', 'e', 'f']
-	// debugger
-$('.' + rowKeys[row] + '.' + (col + 1)).css('background-color', object.color)
+function updateColor(dom, color){
+dom.css('background-color', color)
 }
 
 
@@ -89,6 +90,7 @@ $('.' + rowKeys[row] + '.' + (col + 1)).css('background-color', object.color)
 $(document).ready(function() {
 	drawBoard();
 	addDiagonals();
+	rowKeys = ['a', 'b', 'c', 'd', 'e', 'f']
 	gameBoard = new Board();
 	currentColor = "red";
 	player1 = prompt("Please enter the name of player 1", "type name here");
@@ -121,6 +123,8 @@ $(document).ready(function() {
 
 });
 
+
+
 //*****************************************************//
 
 
@@ -129,6 +133,63 @@ $(document).ready(function() {
 
 
 //*****************************************************//
+function switchColor(){
+	if (currentColor === "red"){
+		currentColor = "black";
+	}	else {
+			currentColor = "red";
+		}
+}
+
+function checkWinner(values, board){
+	var checks = [[],[],[],[]]
+	var currentVal
+	for (var i = 0; i < values.length; i ++){    // iterates through the check values passed as argument
+		currentVal = values[i]
+
+		for (var row = 0; row < 6; row++){    // iterates through each row of the board object passed as argument
+
+			for (var piece = 0; piece < board.rows[row].length; piece++){    // iterates through every piece in the currently checked row
+				var pieceObject = board.rows[row][piece]
+				if (pieceObject.values.indexOf(currentVal) >= 0){
+					checks[i].push(pieceObject.color);
+				}
+
+			}
+		}
+		console.log(checks[i])
+	}
+// debugger
+	for (var i = 0; i < checks.length; i ++){
+		// console.log (checks[i]);
+		var count = 1
+		var typeOfWin
+		var previousColor = ""
+		for (var color = 0; color < checks[i].length; color ++){
+
+			if (checks[i][color] == previousColor){
+				count += 1;
+			} else {
+				count = 1
+			}
+
+			previousColor = checks[i][color]
+		}
+// debugger
+		if (count >= 4){
+			if (i == 0) {
+				typeOfWin = "horizontally";
+			} else if (i == 1) {
+				typeOfWin = "vertically";
+			} else {
+				typeOfWin = "diagonally"
+			}
+			alert('winner!! ' + typeOfWin)
+		} 
+	}
+	// debugger
+}
+
 
 
 function addDiagonals() {
