@@ -115,7 +115,7 @@ $(document).ready(function() {
 		gameBoard.addPiece(6);
 	});
 
-	
+
 	$('#welcome').innerHTML = "Welcome to our JS Connect Four Game, " + player1 + " and " + player2 + ".";
 
 });
@@ -127,6 +127,59 @@ $(document).ready(function() {
 
 
 
+//*****************************************************//
+
+
+function add_diagonals_to_class() {
+$('.a.1').addClass("d3a");
+$('.a.2').addClass("d4a");
+$('.a.3').addClass("d5a");
+$('.a.4').addClass("d6a d1b");
+$('.a.5').addClass("d2b");
+$('.a.6').addClass("d3b");
+$('.a.7').addClass("d4b");
+
+$('.b.1').addClass("d2a");
+$('.b.2').addClass("d3a");
+$('.b.3').addClass("d4a d1b");
+$('.b.4').addClass("d5a d2b");
+$('.b.5').addClass("d6a d3b");
+$('.b.6').addClass("d4b");
+$('.b.7').addClass("d5b");
+
+$('.c.1').addClass("d1a");
+$('.c.2').addClass("d2a d1b");
+$('.c.3').addClass("d3a d2b");
+$('.c.4').addClass("d4a d3b");
+$('.c.5').addClass("d5a d4b");
+$('.c.6').addClass("d6a d5b");
+$('.c.7').addClass("d6b");
+
+$('.d.1').addClass("d1b");
+$('.d.2').addClass("d1a d2b");
+$('.d.3').addClass("d2a d3b");
+$('.d.4').addClass("d3a d4b");
+$('.d.5').addClass("d4a d5b");
+$('.d.6').addClass("d5as d6b");
+$('.d.7').addClass("d6a");
+
+$('.e.1').addClass("d2b");
+$('.e.2').addClass("d3b");
+$('.e.3').addClass("d1a d4b");
+$('.e.4').addClass("d2a d5b");
+$('.e.5').addClass("d3a d6b");
+$('.e.6').addClass("d4a");
+$('.e.7').addClass("d5a");
+
+$('.f.1').addClass("d3b");
+$('.f.2').addClass("d4b");
+$('.f.3').addClass("d5b");
+$('.f.4').addClass("d6b d1a");
+$('.f.5').addClass("d2a");
+$('.f.6').addClass("d3a");
+$('.f.7').addClass("d4a");
+
+};
 
 
 

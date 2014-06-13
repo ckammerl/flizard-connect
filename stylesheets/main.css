@@ -1,10 +1,65 @@
-body {
-	background-color: black
+
+html {
+background: url(http://www2.usanetwork.com/series/monk/interactivegames/mindmachine/images/ad_bk.jpg) no-repeat center center fixed;
+background-size: cover;
 }
 
-td {
-	width: 10px;
-	height: 10px;
-	border: 1px solid black;
-	background-color: white;
+.board {
+  display: block;
+  padding: 0px;
+  /*width: 527px;*/
+  width: 475px;
+  margin: 0px auto;
+/*  margin-left: auto;
+  margin-right: auto;*/
+  font-style: center;
+  vertical-align: center;
+  position: relative;
 }
+table {
+  width: 100%;
+}
+
+#behind td,
+#board td{
+  /*padding: 4px;*/
+  margin: 1px;
+  width: 60px;
+  height: 60px;
+  border: 3px solid yellow;
+  background-color: #CCCCE0;
+}
+
+#board td {
+  border-radius: 60px;
+  /*border: 1px solid white;*/
+}
+
+.display_board {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 5px solid yellow;
+  border-collapse: collapse;
+}
+
+h1, h4 {
+  font-family: 'Open Sans', sans-serif;
+  font-style: center;
+  text-align: center;
+  vertical-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+/*commenting below will make the played pieces disappear*/
+/* td {
+
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  background-color: white;
+}
+*/
+
+
+

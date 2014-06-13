@@ -2,15 +2,30 @@
 <html>
 <head>
 <title>Connect 4!</title>
-
+<div id = "welcome"></div>
 <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="scripts/application.js"></script>
 </head>
 
 <body>
-	<table id="board">
-	</table>
+  <h1 id="welcome">Let's play Connect 4!</h1>
+  <h4>Click on a column to drop it like its hot!</h4>
+
+  <div class="board">
+    <table id="behind" class="display_board">
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </table>
+
+    <table id="board" class="display_board">
+    </table>
+
+  </div>
 </body>
 
 </html>
