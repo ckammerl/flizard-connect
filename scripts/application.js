@@ -103,29 +103,15 @@ $(document).ready(function() {
 
 });
 
-	// $('.1').on("click", function(){ // column classes
-	// 	gameBoard.addPiece(0); //rows
-	// });
-	// $('.2').on("click", function(){
-	// 	gameBoard.addPiece(1);
-	// });
-	// $('.3').on("click", function(){
-	// 	gameBoard.addPiece(2);
-	// });
-	// $('.4').on("click", function(){
-	// 	gameBoard.addPiece(3);
-	// });
-	// $('.5').on("click", function(){
-	// 	gameBoard.addPiece(4);
-	// });
-	// $('.6').on("click", function(){
-	// 	gameBoard.addPiece(5);
-	// });
-	// $('.7').on("click", function(){
-	// 	gameBoard.addPiece(6);
-	// });
 
-
+function resetBoard() {
+		$("#board").empty();
+	drawBoard();
+	addDiagonals();
+	gameBoard = new Board();
+	addClickEventListener();
+	currentColor = "red";
+}
 
 
 
@@ -197,7 +183,7 @@ function checkWinner(values, board){
 				count += 1;
 				if (count == 4){
 					var gameWinner
-					var loser 
+					var loser
 					if(currentColor == "red") {
 						gameWinner = player1;
 						loser = player2;
@@ -217,7 +203,7 @@ function checkWinner(values, board){
 					}
 						alert("Congratulations, " + gameWinner + "!!!  You beat " + loser + " by connecting 4 pieces " + typeOfWin + "!!!")
 						removeClickEventListener();
-					} 
+					}
 				} else {
 				count = 1
 			}
