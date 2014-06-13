@@ -20,11 +20,26 @@ h4 {
 table {
   width: 100%;
 }
+h4 {
+  color: #ffab00;
+  text-shadow: 1px 1px 5px #000000;
+}
 .red {
+  color: black;
   display: inline;
   float: left;
 }
+
+#red_player {
+  text-shadow: 1px 1px 3px #ffab00;
+}
+
+#black_player {
+  text-shadow: 1px 1px 3px #ffab00;
+}
+
 .black {
+  color: black;
   display: inline;
   float: right;
 }
@@ -32,6 +47,7 @@ table {
 #welcome {
   font-family: serif;
   color: #ffab00;
+  text-shadow: 2px 2px 5px #000000;
 }
 
 #behind td,
