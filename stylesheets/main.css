@@ -19,19 +19,18 @@ background-size: cover;
 table {
   width: 100%;
 }
+.red {
+  display: inline;
+  float: left;
+}
+.black {
+  display: inline;
+  float: right;
+}
 
 #welcome {
   font-family: serif;
   color: #ffab00;
-}
-#red_player {
-  text-align: left;
-  float: left;
-}
-
-#black_player {
-  text-align: right;
-  float: right;
 }
 
 #behind td,
