@@ -162,7 +162,7 @@ function addDiagonals() {
 	$('.d.3').addClass("d2a d3b");
 	$('.d.4').addClass("d3a d4b");
 	$('.d.5').addClass("d4a d5b");
-	$('.d.6').addClass("d5as d6b");
+	$('.d.6').addClass("d5a d6b");
 	$('.d.7').addClass("d6a");
 	//row 5
 	$('.e.1').addClass("d2b");
