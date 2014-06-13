@@ -12,14 +12,22 @@
   <h1 id="welcome">Let's play Connect 4!</h1>
   <h4>Click on a column to drop it like its hot!</h4>
 
-  <h1 id="red_player">Red Player</h1>
-    <svg height="100" width="100">
-      <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
-    </svg>
-  <h1 id="black_player">Black Player</h1>
-    <svg height="100" width="100">
-      <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="black" />
-    </svg>
+  <div class="red">
+    <h1 id="red_player">Red Player</h1>
+      <svg height="100" width="100">
+        <circle cx="50" cy="50" r="45" stroke="orange" stroke-width="2" fill="red" />
+      </svg>
+    <button id="change_red_name">Change Red Player Name</button>
+    </div>
+
+  <div class="black">
+    <h1 id="black_player">Black Player</h1>
+      <svg height="100" width="100">
+        <circle cx="50" cy="50" r="45" stroke="orange" stroke-width="2" fill="black" />
+      </svg>
+    <button id="change_black_name">Change Black Player Name</button>
+  </div>
+
 
   <div class="board">
     <table id="behind" class="display_board">
@@ -34,9 +42,8 @@
     <table id="board" class="display_board">
     </table>
 
-
-
   </div>
+    <button id="reset_game">Reset Game</button>
 </body>
 
 </html>
