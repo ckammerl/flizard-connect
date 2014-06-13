@@ -19,7 +19,8 @@ Board.prototype = {
 		else {
 			console.log("whatup");
 			newPiece = new Piece(currentColor);
-			this.rows[newRow].splice(column, 0, newPiece);
+			this.rows[newRow][column] = newPiece
+			// this.rows[newRow].splice(column, 0, newPiece);
 			// this.rows[newRow].push(newPiece);
 			this.columns[column].push(newPiece);
 
@@ -174,8 +175,11 @@ function checkWinner(values, board){
 
 			for (var piece = 0; piece < board.rows[row].length; piece++){    // iterates through every piece in the currently checked row
 				var pieceObject = board.rows[row][piece]
-				if (pieceObject.values.indexOf(currentVal) >= 0){
-					checks[i].push(pieceObject.color);
+				// debugger
+				if (pieceObject != undefined){
+					if (pieceObject.values.indexOf(currentVal) >= 0){
+						checks[i].push(pieceObject.color);
+					}
 				}
 			}
 		}
@@ -191,42 +195,35 @@ function checkWinner(values, board){
 
 			if (checks[i][color] == previousColor){
 				count += 1;
-			} else {
+				if (count == 4){
+					var gameWinner
+					var loser 
+					if(currentColor == "red") {
+						gameWinner = player1;
+						loser = player2;
+						console.log("current color is red")
+					} else {
+						gameWinner = player2;
+						loser = player1;
+						console.log("current color is black")
+					}
+
+					if (i == 0) {
+						typeOfWin = "horizontally";
+					} else if (i == 1) {
+						typeOfWin = "vertically";
+					} else {
+						typeOfWin = "diagonally"
+					}
+						alert("Congratulations, " + gameWinner + "!!!  You beat " + loser + " by connecting 4 pieces " + typeOfWin + "!!!")
+						removeClickEventListener();
+					} 
+				} else {
 				count = 1
 			}
-
 			previousColor = checks[i][color]
 		}
-// debugger
-		if (count >= 4){
-			var gameWinner
-			var loser
-			if(currentColor == "red") {
-				gameWinner = player1;
-				loser = player2;
-				console.log("current color is red")
-			}
-			else {
-				gameWinner = player2;
-				loser = player1;
-				console.log("current color is black")
-			}
-
-
-			if (i == 0) {
-				typeOfWin = "horizontally";
-			} else if (i == 1) {
-				typeOfWin = "vertically";
-			} else {
-				typeOfWin = "diagonally"
-			}
-
-			alert("Congratulations, " + gameWinner + "!!!  You beat " + loser + " by connecting 4 pieces " + typeOfWin + "!!!")
-			removeClickEventListener();
-		}
-
 	}
-	// debugger
 }
 
 
