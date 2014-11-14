@@ -96,11 +96,15 @@ $(document).ready(function() {
 	addClickEventListener();
 	rowKeys = ['a', 'b', 'c', 'd', 'e', 'f']
 	currentColor = "red";
+
+	$("#start_button").on("click", function(){
 	player1 = prompt("Please enter the name of player 1", "type name here");
 	player2 = prompt("Please enter the name of player 2", "type name here");
 
 	$('#welcome').innerHTML = "Welcome to our JS Connect Four Game, " + player1 + " and " + player2 + ".";
-
+	$("#red_player").text(player1);
+	$("#black_player").text(player2);
+	});
 });
 
 

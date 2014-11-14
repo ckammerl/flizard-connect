@@ -1,4 +1,3 @@
-
 html {
   background-color: blue;
   background: url(http://www2.usanetwork.com/series/monk/interactivegames/mindmachine/images/ad_bk.jpg) no-repeat center center fixed;
@@ -74,7 +73,7 @@ h4 {
   margin-bottom: 50px;
 }
 
-h1, h4 {
+h1, h2, h4 {
   font-family: 'Open Sans', sans-serif;
   font-style: center;
   text-align: center;
@@ -83,7 +82,7 @@ h1, h4 {
   margin-right: auto;
 }
 
-#reset_game {
+#reset_game, #start_button {
   display: block;
   margin: 0px auto 15px auto;
   clear: both;
